@@ -6,6 +6,7 @@ import com.amobi.toanvq.sql.*;
 import com.amobi.toanvq.utils.KMeans;
 import com.amobi.toanvq.utils.MatrixUtilities;
 import com.amobi.toanvq.utils.NumberUtils;
+
 import org.ojalgo.matrix.BasicMatrix;
 import org.ojalgo.matrix.PrimitiveMatrix;
 import org.w3c.dom.Document;
@@ -13,6 +14,7 @@ import org.w3c.dom.Element;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+
 import java.io.File;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -25,18 +27,26 @@ public class ICCC {
     private AppReader appReader;
     private LinkReader linkReader;
 
-
+    @SuppressWarnings("rawtypes")
     private BasicMatrix adMatrix;
+    @SuppressWarnings("rawtypes")
     private BasicMatrix appMatrix;
+    @SuppressWarnings("rawtypes")
     private BasicMatrix adAppMatrix;
+    @SuppressWarnings("rawtypes")
     private BasicMatrix appAdMatrix;
 
+    @SuppressWarnings("rawtypes")
     private BasicMatrix AGU, AGUA;
+    @SuppressWarnings("rawtypes")
     private BasicMatrix UGA, UGAU;
-
+    
+    @SuppressWarnings("rawtypes")
     private BasicMatrix GU, GA;
 
+    @SuppressWarnings("rawtypes")
     private BasicMatrix GAGU;
+    @SuppressWarnings("rawtypes")
     private BasicMatrix GUGA;
 
     private int numAdGroup, numAppGroup;
@@ -243,6 +253,7 @@ public class ICCC {
      * @param link: Link Matrix AU
      * @return
      */
+    @SuppressWarnings("rawtypes")
     public BasicMatrix computeRelation(BasicMatrix U, BasicMatrix GA, BasicMatrix link) {
         int numRows = (int) U.countRows();
         int numColumns = (int) GA.countColumns();
@@ -270,6 +281,7 @@ public class ICCC {
      * Support function to calculate GAGU
      * @return
      */
+    @SuppressWarnings("rawtypes")
     private BasicMatrix computeGAGU() {
         int numRows = numAdGroup;
         int numColumns = numAppGroup;

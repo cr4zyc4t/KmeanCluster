@@ -2,6 +2,7 @@ package com.amobi.toanvq.utils;
 
 
 import com.amobi.toanvq.sql.AdReader;
+
 import org.ojalgo.matrix.BasicMatrix;
 import org.ojalgo.matrix.PrimitiveMatrix;
 import org.ojalgo.random.Normal;
@@ -10,9 +11,12 @@ import org.ojalgo.random.Normal;
 public class KMeans {
     private int K;
 
-    private BasicMatrix data;
-    private BasicMatrix center[];
-    private BasicMatrix x[];
+    @SuppressWarnings("rawtypes")
+	private BasicMatrix data;
+    @SuppressWarnings("rawtypes")
+	private BasicMatrix center[];
+    @SuppressWarnings("rawtypes")
+	private BasicMatrix x[];
     private double w[][];
 
     private long numRows;
@@ -23,7 +27,8 @@ public class KMeans {
     private BasicMatrix.Factory<PrimitiveMatrix> factory= PrimitiveMatrix.FACTORY;
 
 
-    public KMeans(int K, BasicMatrix data) {
+    @SuppressWarnings("rawtypes")
+	public KMeans(int K, BasicMatrix data) {
         this.K = K;
         this.data = data;
     }
@@ -56,7 +61,8 @@ public class KMeans {
 
     }
 
-    public void eStep() {
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	public void eStep() {
         for (int i = 0; i < K; i++) {
 
             BasicMatrix sum = x[0].multiply(w[0][i]);
@@ -115,7 +121,8 @@ public class KMeans {
         return result;
     }
 
-    public BasicMatrix execute(int times) {
+    @SuppressWarnings("rawtypes")
+	public BasicMatrix execute(int times) {
         init();
 
         int i=0;
@@ -142,11 +149,17 @@ public class KMeans {
         return factory.rows(w);
     }
 
-    public static void main(String args[]){
-        AdReader adReader=new AdReader();
-        BasicMatrix matrix=adReader.read();
-
-        new KMeans(5, matrix).execute(300);
+    @SuppressWarnings("rawtypes")
+	public static void main(String args[]){
+        AdReader adReader = new AdReader();
+        BasicMatrix matrix = adReader.read();
+        
+        int times2run = 300;
+        if (args.length > 0) {
+			times2run = Integer.parseInt(args[0]);
+		}
+        
+        new KMeans(5, matrix).execute(times2run);
     }
 
 }

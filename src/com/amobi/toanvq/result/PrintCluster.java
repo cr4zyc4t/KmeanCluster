@@ -4,11 +4,13 @@ package com.amobi.toanvq.result;
 import com.amobi.toanvq.sql.AdReader;
 import com.amobi.toanvq.sql.AppReader;
 import com.amobi.toanvq.sql.Config;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+
 import java.io.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -42,7 +44,8 @@ public class PrintCluster {
 
     public static final String GAP = ",";
 
-    public List<Integer> getIdList(String input) {
+    @SuppressWarnings({ "resource", "unused" })
+	public List<Integer> getIdList(String input) {
         try {
             FileInputStream fileInputStream = new FileInputStream(input);
             Scanner scanner = new Scanner(fileInputStream);

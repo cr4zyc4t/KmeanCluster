@@ -149,14 +149,12 @@ public class AdReader {
                 idList.add(resultSet.getInt(AD_ID));
                 List<Double> list = new ArrayList<Double>();
 
-
                 // analyze area
                 String areaRaw = resultSet.getString(AD_AREA);
                 List<Double> listArea = analyzeArea(areaRaw, coefficientArea);
                 NumberUtils.addToList(listArea, list);
 
                 indexColumns = indexColumns + listArea.size();
-
 
                 // analyze categories
                 String categoryRaw = resultSet.getString(AD_CATEGORY);
@@ -189,15 +187,12 @@ public class AdReader {
                 indexColumns = indexColumns + 1;
 
                 // ADV_AUDIENCES
-
                 String audienceRaw = resultSet.getString(AD_AUDIENCE);
                 List<Double> listAudiences = analyzeAudiences(audienceRaw, coefficientAudiences);
                 NumberUtils.addToList(listAudiences, list);
                 indexColumns = indexColumns + listAudiences.size();
 
-
                 // ADV_SCREEN_SIZE
-
                 list = NumberUtils.addZero(list, 1);
                 int screenSizeRaw = resultSet.getInt(AD_SCREEN_SIZE);
                 list.set(indexColumns, Double.valueOf(MAX_AD_SCREEN_SIZE - screenSizeRaw)/(MAX_AD_SCREEN_SIZE)*coefficientScreenSize);

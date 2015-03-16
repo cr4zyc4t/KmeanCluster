@@ -5,6 +5,7 @@ import com.amobi.toanvq.sql.*;
 import com.amobi.toanvq.utils.CMeans;
 import com.amobi.toanvq.utils.MatrixUtilities;
 import com.amobi.toanvq.utils.NumberUtils;
+
 import org.ojalgo.matrix.BasicMatrix;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -12,6 +13,7 @@ import org.w3c.dom.Node;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+
 import java.io.File;
 
 public class AmobiClusterC {
@@ -20,19 +22,28 @@ public class AmobiClusterC {
     private AppReader appReader;
     private LinkReader linkReader;
 
-    private BasicMatrix adMatrix;
+    @SuppressWarnings("rawtypes")
+	private BasicMatrix adMatrix;
+    @SuppressWarnings("rawtypes")
     private BasicMatrix appMatrix;
+    @SuppressWarnings("rawtypes")
     private BasicMatrix adAppMatrix;
+    @SuppressWarnings("rawtypes")
     private BasicMatrix appAdMatrix;
 
     private double coeff=2;
-
+    
+    @SuppressWarnings("rawtypes")
     private BasicMatrix AGU, AGUA;
+    @SuppressWarnings("rawtypes")
     private BasicMatrix UGA, UGAU;
-
+    
+    @SuppressWarnings("rawtypes")
     private BasicMatrix GU, GA;
 
+    @SuppressWarnings("rawtypes")
     private BasicMatrix GAGU;
+    @SuppressWarnings("rawtypes")
     private BasicMatrix GUGA;
 
     private int numAdGroup, numAppGroup;
@@ -145,7 +156,8 @@ public class AmobiClusterC {
     /**
      * Begin implement
      */
-    public void executeICCA() {
+    @SuppressWarnings("unchecked")
+	public void executeICCA() {
         System.out.println("Cluster Adv Matrix to GA...");
         GA=new CMeans(adMatrix, numAdGroup, coeff).execute(this.kTimes);
 

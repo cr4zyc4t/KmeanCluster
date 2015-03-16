@@ -1,28 +1,32 @@
 package com.amobi.toanvq.predict;
 
-import com.amobi.toanvq.sql.AdReader;
-import org.ojalgo.matrix.BasicMatrix;
-import weka.classifiers.bayes.NaiveBayes;
-import weka.core.Attribute;
-import weka.core.DenseInstance;
-import weka.core.Instance;
-import weka.core.Instances;
-
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import org.ojalgo.matrix.BasicMatrix;
+
+import weka.core.Attribute;
+import weka.core.DenseInstance;
+import weka.core.Instance;
+import weka.core.Instances;
+
+import com.amobi.toanvq.sql.AdReader;
+
 /**
  * Created by dangchienhsgs on 30/01/2015.
  */
 public class PredictAds {
-    private int numCluster;
+    @SuppressWarnings("unused")
+	private int numCluster;
+    
     private List<Integer> listID;
     private List<Integer> listCluster;
-    public PredictAds(String clusterFiles, String idFiles) throws IOException{
+    
+    @SuppressWarnings("resource")
+	public PredictAds(String clusterFiles, String idFiles) throws IOException{
         FileInputStream fileInputStream=new FileInputStream(idFiles);
         Scanner scanner=new Scanner(fileInputStream);
 

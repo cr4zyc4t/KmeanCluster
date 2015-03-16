@@ -1,0 +1,44 @@
+<configuration>
+
+    <algorithm>
+
+        <num-ad-cluster>7</num-ad-cluster>
+        <num-app-cluster>7</num-app-cluster>
+
+        <kmeans-times>400</kmeans-times>
+        <amobi-times>200</amobi-times>
+
+
+    </algorithm>
+
+    <advertisement>
+        <coefficient>
+            <area>1</area>
+            <audiences>1</audiences>
+            <category>100</category>
+            <weight-click>100</weight-click>
+            <gender>1</gender>
+            <device>1</device>
+            <screensize>1</screensize>
+            <type>3</type>
+        </coefficient>
+    </advertisement>
+
+
+    <application>
+        <coefficient>
+            <audiences>2</audiences>
+            <type>1</type>
+            <category>100</category>
+            <weight-click>100</weight-click>
+            <gender>2</gender>
+            <device>1</device>
+            <smartstatus>1</smartstatus>
+            <rate>1</rate>
+            <like>1</like>
+            <download>1</download>
+        </coefficient>
+    </application>
+
+
+</configuration>

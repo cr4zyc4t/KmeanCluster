@@ -1,27 +1,27 @@
 package com.amobi.toanvq.jsp;
 
 
-import com.amobi.toanvq.result.PrintCluster;
-import com.amobi.toanvq.sql.*;
-import com.amobi.toanvq.utils.KMeans;
-import com.amobi.toanvq.utils.MatrixUtilities;
-import com.amobi.toanvq.utils.NumberUtils;
+import java.io.File;
+import java.util.Arrays;
+import java.util.Calendar;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
 import org.ojalgo.matrix.BasicMatrix;
 import org.ojalgo.matrix.PrimitiveMatrix;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import weka.core.matrix.Matrix;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileReader;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Scanner;
+import com.amobi.toanvq.result.PrintCluster;
+import com.amobi.toanvq.sql.AdReader;
+import com.amobi.toanvq.sql.AppReader;
+import com.amobi.toanvq.sql.Config;
+import com.amobi.toanvq.sql.LinkConverter;
+import com.amobi.toanvq.sql.LinkReader;
+import com.amobi.toanvq.utils.KMeans;
+import com.amobi.toanvq.utils.MatrixUtilities;
+import com.amobi.toanvq.utils.NumberUtils;
 
 public class AmobiClusterK {
 
@@ -32,18 +32,27 @@ public class AmobiClusterK {
     private LinkReader linkReader;
 
 
-    private BasicMatrix adMatrix;
-    private BasicMatrix appMatrix;
-    private BasicMatrix adAppMatrix;
-    private BasicMatrix appAdMatrix;
+    @SuppressWarnings("rawtypes")
+	private BasicMatrix adMatrix;
+    @SuppressWarnings("rawtypes")
+	private BasicMatrix appMatrix;
+    @SuppressWarnings("rawtypes")
+	private BasicMatrix adAppMatrix;
+    @SuppressWarnings("rawtypes")
+	private BasicMatrix appAdMatrix;
 
-    private BasicMatrix AGU, AGUA;
-    private BasicMatrix UGA, UGAU;
+    @SuppressWarnings("rawtypes")
+	private BasicMatrix AGU, AGUA;
+    @SuppressWarnings("rawtypes")
+	private BasicMatrix UGA, UGAU;
 
-    private BasicMatrix GU, GA;
+    @SuppressWarnings("rawtypes")
+	private BasicMatrix GU, GA;
 
-    private BasicMatrix GAGU;
-    private BasicMatrix GUGA;
+    @SuppressWarnings("rawtypes")
+	private BasicMatrix GAGU;
+    @SuppressWarnings("rawtypes")
+	private BasicMatrix GUGA;
 
     private int numAdGroup, numAppGroup;
 
@@ -104,9 +113,6 @@ public class AmobiClusterK {
             amobiTimes = Integer.parseInt(
                     conAlgorithm.getElementsByTagName("amobi-times").item(0).getTextContent().trim()
             );
-
-
-
 
             this.weightClickForAd=Double.parseDouble(
                     adCoefficient.getElementsByTagName("weight-click").item(0).getTextContent().trim()
@@ -248,7 +254,8 @@ public class AmobiClusterK {
      * @param link: Link Matrix AU
      * @return
      */
-    public BasicMatrix computeRelation(BasicMatrix U, BasicMatrix GA, BasicMatrix link) {
+    @SuppressWarnings("rawtypes")
+	public BasicMatrix computeRelation(BasicMatrix U, BasicMatrix GA, BasicMatrix link) {
         int numRows = (int) U.countRows();
         int numColumns = (int) GA.countColumns();
 
@@ -275,7 +282,8 @@ public class AmobiClusterK {
      * Support function to calculate GAGU
      * @return
      */
-    private BasicMatrix computeGAGU() {
+    @SuppressWarnings("rawtypes")
+	private BasicMatrix computeGAGU() {
         int numRows = numAdGroup;
         int numColumns = numAppGroup;
 
