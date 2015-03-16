@@ -134,7 +134,7 @@ public class KMeans {
                 oldResult=result;
             }
 
-            if (i>times){
+            if (i > times){
                 break;
             }
         } while (true);
