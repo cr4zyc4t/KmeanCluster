@@ -2,14 +2,13 @@ package com.amobi.toanvq.utils;
 
 
 
-import org.ojalgo.matrix.BasicMatrix;
-import org.ojalgo.matrix.PrimitiveMatrix;
-import org.ojalgo.random.Weibull;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+
+import org.ojalgo.matrix.BasicMatrix;
+import org.ojalgo.matrix.PrimitiveMatrix;
 
 
 public class MatrixUtilities {
@@ -46,7 +45,8 @@ public class MatrixUtilities {
      * @param matrix
      * @return normalized BasicMatrix
      */
-    public static BasicMatrix normalizeMatrix(BasicMatrix matrix) {
+    @SuppressWarnings("rawtypes")
+	public static BasicMatrix normalizeMatrix(BasicMatrix matrix) {
 
         // get the dimension of the BasicMatrix
         long numRows = matrix.countRows();

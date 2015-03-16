@@ -64,7 +64,6 @@ public class AmobiClusterK {
     private double weightClickForAd;
 
     public AmobiClusterK() {
-
         initData();
         initConfiguration();
     }
@@ -77,7 +76,6 @@ public class AmobiClusterK {
         try {
 
             // Begin read configuration
-
             File xmlConfiguration = new File(Config.CONFIGURATION);
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -85,7 +83,6 @@ public class AmobiClusterK {
             Document doc = dBuilder.parse(xmlConfiguration);
 
             doc.getDocumentElement().normalize();
-
 
             // Begin read configuration
             Element conAlgorithm = (Element) doc.getElementsByTagName("algorithm").item(0);
@@ -122,9 +119,6 @@ public class AmobiClusterK {
                     appCoefficient.getElementsByTagName("weight-click").item(0).getTextContent().trim()
             );
 
-
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -142,13 +136,13 @@ public class AmobiClusterK {
 
         adMatrix = adReader.read();
         adMatrix = MatrixUtilities.normalizeMatrix(adMatrix);
-        //MatrixUtilities.toFile("AdMatrix.csv", adMatrix);
+        MatrixUtilities.toFile("AdMatrix.csv", adMatrix);
 
 
         System.out.println("Reading Application BasicMatrix.....");
         appMatrix = appReader.read();
         appMatrix = MatrixUtilities.normalizeMatrix(appMatrix);
-        //MatrixUtilities.toFile("AppMatrix.csv", appMatrix);
+        MatrixUtilities.toFile("AppMatrix.csv", appMatrix);
 
         linkReader = new LinkReader(adReader.idList, appReader.idList, new LinkConverter().getLinkIDAdvIDMap());
 
@@ -318,7 +312,11 @@ public class AmobiClusterK {
     }
 
     public static void main(String args[]){
-        Config.setCONFIGURATION("configuration.xml");
+    	String config_path = "configuration.xml";
+    	if (args.length > 0) {
+			config_path = args[0];
+		}
+        Config.setCONFIGURATION(config_path);
         new AmobiClusterK().executeICCA();
     }
 }
